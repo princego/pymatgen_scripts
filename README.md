@@ -1,20 +1,24 @@
 # Pymatgen Scripts
 Converting a conventional cell to primitve cell.
 
-##Running python scripts on supercomputers
+## Running python scripts on supercomputers
 
 Write the below command in the terminal to load python module
 
 `module load anaconda3_2019`
 
-input file
+Input file: input.py
 
 ```
-
+#!/lfs/sware/anaconda3_2019/bin/python3
+from pymatgen.core import Structure
+from pymatgen.symmetry.analyzer import SpacegroupAnalyzer
+str = Structure.from_file('TiN.vasp')
+strPrim = str.get_primitive_structure()
+strPrim.to(fmt='poscar', filename='TiNprimitive')
 ```
 
-Submission script <br>
-File: job.sh
+Submission file: job.sh
 ```
 #!/bin/bash
 #PBS -o out
