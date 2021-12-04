@@ -1,9 +1,8 @@
 # Pymatgen Scripts
-Converting a conventional cell to primitve cell.
 
-## Running python scripts on supercomputers
+## Converting a conventional cell to primitve cell using pymatgen library on supercomputers
 
-Write the below command in the terminal to load python module
+Write the below command in the terminal to load python module where pymatgen is installed
 
 `module load anaconda3_2019`
 
@@ -18,6 +17,8 @@ strPrim = str.get_primitive_structure()
 strPrim.to(fmt='poscar', filename='TiNprimitive')
 ```
 
+Use submission script because some jobs might take longer time.
+
 Submission file: job.sh
 ```
 #!/bin/bash
@@ -29,7 +30,7 @@ Submission file: job.sh
 ## Select n nodes, each with n CPUs
 #PBS -l select=1:ncpus=1
 cd $PBS_O_WORKDIR
-mpirun -np 1 /lfs/sware/anaconda3_2019/bin/python3 1.py > log
+mpirun -np 1 /lfs/sware/anaconda3_2019/bin/python3 input.py > log
 ```
 
 Submit the calculation
