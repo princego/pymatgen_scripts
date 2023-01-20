@@ -1,4 +1,7 @@
-# collecting mp ids
+from mp_api.client import MPRester
+mpr = MPRester('<your api key>') # get it in materials project dashboard after signing up.
+
+# collecting mp ids for Hf-C based materials
 HfC_mp = mpr.get_materials_ids('Hf-C')
 
 # collecting formation energy per atom
