@@ -13,9 +13,9 @@ for i in range(len(mp_ids)):
 
 # sorting according to least formation energy per atom
 sorted_dict = dict(sorted(structure_dict.items(), key=lambda x:x[1]))
-print(sorted_dict)
+# print(sorted_dict)
 
 # finding bulk and shear modulus for the lowest formation energy structure
 material = mpr.elasticity.get_data_by_id(list(sorted_dict.keys())[0])
-data = {'system':material.pretty_formula,'bulk_modulus':material.elasticity.k_vrh, 'shear_modulus':material.elasticity.g_vrh}
+data = {'system':material.pretty_formula,'bulk_modulus':material.elasticity.k_vrh, 'shear_modulus':material.elasticity.g_vrh, list(sorted_dict.keys())[0]: list(sorted_dict.values())[0]}
 print(data)
