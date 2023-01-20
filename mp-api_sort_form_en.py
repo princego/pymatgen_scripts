@@ -13,3 +13,8 @@ for i in range(len(HfC_mp)):
 # sorting according to least formation energy per atom
 sorted_dict = dict(sorted(HfC_dict.items(), key=lambda x:x[1]))
 print(sorted_dict)
+
+# finding bulk and shear modulus for the lowest formation energy structure
+material = mpr.elasticity.get_data_by_id(list(sorted_dict.keys())[0])
+data = {'system':material.pretty_formula,'bulk_modulus':material.elasticity.k_vrh, 'shear_modulus':material.elasticity.g_vrh}
+print(data)
